@@ -175,12 +175,15 @@ def evolve_state_vector(circuit, initial_state_vector):
     statevectorOut_latex=array_to_latex(statevectorOut, prefix="\\text{Statevector = }")
     return statevectorOut_latex
 
+def display_io_info(isv, isvc, osv, osvc):
+    display(Markdown("### Input Statevector"))
+    display(Latex(array_to_latex(isv, prefix="\\text{Statevector = }").data[1:][:-2] + " = \\displaystyle"+ isvc +"$"))
+    display(Markdown("### Output Statevector"))
+    display(Latex(array_to_latex(osv, prefix="\\text{Statevector = }").data[1:][:-2] + " = \\displaystyle"+ osvc +"$"))
+
 def display_info(qc, isv, isvc, osv, osvc):
     display(Markdown("### Layout"))
     display(qc.draw(output='mpl'))
     display(Markdown("### Unitary Matrix"))
     display(Latex("$"+derive_unitary_matrix(qc).data[4:][:-3]+"$"))
-    display(Markdown("### Input Statevector"))
-    display(Latex(array_to_latex(isv, prefix="\\text{Statevector = }").data[1:][:-2] + " = \\displaystyle"+ isvc +"$"))
-    display(Markdown("### Output Statevector"))
-    display(Latex(array_to_latex(osv, prefix="\\text{Statevector = }").data[1:][:-2] + " = \\displaystyle"+ osvc +"$"))
+    display_io_info(isv, isvc, osv, osvc)
