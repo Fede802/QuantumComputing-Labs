@@ -188,6 +188,7 @@ def display_structure(qc):
     display(qc.draw(output='mpl'))
     display(Markdown("### Unitary Matrix"))
     display(Latex("$"+derive_unitary_matrix(qc).data[4:][:-3]+"$"))
+    
 def display_info(qc, isv, isvc, osv, osvc):
     display_structure(qc)
     display_io_info(isv, isvc, osv, osvc)
